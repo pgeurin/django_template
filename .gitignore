@@ -31,6 +31,10 @@ env/
 # Security - API keys and credentials
 token.json
 credentials.json
+# OAuth credentials - never commit these!
+google_oauth_credentials.json
+django_app/google_oauth_credentials.json
+**/google_oauth_credentials.json
 *.env
 .env
 .env.local
