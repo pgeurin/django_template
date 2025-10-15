@@ -14,6 +14,7 @@
   - ✅ GitHub Actions workflow
   - ✅ Render deployment configuration
   - ✅ Automated deployment
+  - ✅ Live deployment at https://butterfly2-app-latest.onrender.com
 
 ## Pending
 - User profile functionality
