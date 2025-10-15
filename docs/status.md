@@ -15,6 +15,7 @@
   - ✅ Render deployment configuration
   - ✅ Automated deployment
   - ✅ Live deployment at https://butterfly2-app-latest.onrender.com
+  - ✅ Django template deployment at https://django-template.onrender.com
 
 ## Pending
 - User profile functionality
