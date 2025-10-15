@@ -9,7 +9,7 @@ import sys
 import django
 
 # Set up Django environment
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'heyyoufree.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_template.settings')
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'django_app'))
 django.setup()
 
