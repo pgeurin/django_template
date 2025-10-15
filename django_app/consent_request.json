@@ -1,0 +1,6 @@
+{
+  "support_email": "admin@example.com",
+  "application_name": "Django Template",
+  "developer_email": "admin@example.com",
+  "scopes": ["profile", "email", "https://www.googleapis.com/auth/calendar.readonly"]
+}
