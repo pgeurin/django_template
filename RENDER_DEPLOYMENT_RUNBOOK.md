@@ -97,7 +97,7 @@ services:
   - type: web
     name: django-template
     runtime: python
-    buildCommand: pip install -r requirements.txt && pip install gunicorn==21.2.0
+    buildCommand: pip install -r requirements.txt
     startCommand: cd django_app && gunicorn django_template.wsgi:application
     envVars:
       - key: DEBUG
@@ -120,7 +120,7 @@ databases:
     plan: free
 ```
 
-> **Important**: Make sure gunicorn is explicitly installed in the buildCommand to avoid the "gunicorn: command not found" error.
+> **Important**: Make sure gunicorn is included in your requirements.txt file to avoid the "gunicorn: command not found" error. Render uses separate environments for build and runtime, so dependencies must be in requirements.txt to be available at runtime.
 
 ### 1.6. Update requirements.prod.txt
 
@@ -274,12 +274,12 @@ If needed, upgrade your plan in the Render dashboard to handle more traffic.
 - **Database Connection Errors**: Verify DATABASE_URL environment variable
 - **Google OAuth Not Working**: Check redirect URIs and credentials
 - **500 Server Errors**: Check application logs for details
-- **"gunicorn: command not found"**: Make sure gunicorn is explicitly installed in your build script:
+- **"gunicorn: command not found"**: Make sure gunicorn is included in your requirements.txt file:
   ```bash
-  # In build.sh
-  pip install -r requirements.txt
-  pip install gunicorn==21.2.0
+  # Add to requirements.txt
+  gunicorn==21.2.0
   ```
+  Remember that Render uses separate environments for build and runtime, so dependencies must be in requirements.txt to be available at runtime.
 
 ### 6.2. Render Support
 
