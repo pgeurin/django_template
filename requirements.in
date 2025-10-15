@@ -18,6 +18,12 @@ django-cors-headers
 # HTTP Requests (required by django-allauth)
 requests
 
+# JWT (required by django-allauth)
+PyJWT
+
+# Cryptography (required by django-allauth)
+cryptography
+
 # Production Server
 gunicorn
 
