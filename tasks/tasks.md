@@ -14,11 +14,11 @@ This document outlines the current tasks, requirements, and priorities for the D
 - [x] Configure direct Google login button
 - [x] Rename project from "heyyoufree" to "django_template"
 - [x] Create project documentation
+- [x] Implement API example endpoints
+- [x] Add comprehensive test suite
 
 ### In Progress
 
-- [ ] Implement API example endpoints
-- [ ] Add comprehensive test suite
 - [ ] Set up CI/CD pipeline
 
 ### Backlog
