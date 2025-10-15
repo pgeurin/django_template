@@ -97,7 +97,7 @@ services:
   - type: web
     name: django-template
     runtime: python
-    buildCommand: ./build.sh
+    buildCommand: pip install -r requirements.txt && pip install gunicorn==21.2.0
     startCommand: cd django_app && gunicorn django_template.wsgi:application
     envVars:
       - key: DEBUG
@@ -119,6 +119,8 @@ databases:
     user: django_template
     plan: free
 ```
+
+> **Important**: Make sure gunicorn is explicitly installed in the buildCommand to avoid the "gunicorn: command not found" error.
 
 ### 1.6. Update requirements.prod.txt
 
