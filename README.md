@@ -220,6 +220,20 @@ pip install -r requirements.prod.txt
 gunicorn heyyoufree.wsgi:application
 ```
 
+### Deploying to Render
+
+This project includes configuration for easy deployment to [Render](https://render.com/):
+
+1. Push your code to GitHub
+2. Sign up for a Render account and connect your GitHub repository
+3. Create a new "Blueprint" in Render and select your repository
+4. Render will automatically detect the `render.yaml` configuration
+5. Click "Apply" to create the web service and database
+6. Once deployed, set up your Google OAuth credentials in the Render dashboard:
+   - Go to your web service → Environment
+   - Add your Google OAuth credentials as environment variables
+7. Access your deployed app at the URL provided by Render
+
 ## 🛠️ Customization
 
 ### Extending the User Model
