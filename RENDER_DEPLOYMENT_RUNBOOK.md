@@ -254,6 +254,12 @@ If needed, upgrade your plan in the Render dashboard to handle more traffic.
 - **Database Connection Errors**: Verify DATABASE_URL environment variable
 - **Google OAuth Not Working**: Check redirect URIs and credentials
 - **500 Server Errors**: Check application logs for details
+- **"gunicorn: command not found"**: Make sure gunicorn is explicitly installed in your build script:
+  ```bash
+  # In build.sh
+  pip install -r requirements.txt
+  pip install gunicorn==21.2.0
+  ```
 
 ### 6.2. Render Support
 
