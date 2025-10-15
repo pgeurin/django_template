@@ -1,0 +1,26 @@
+# Core Django
+Django>=5.2,<6.0
+python-dotenv
+
+# Database
+psycopg2-binary
+dj-database-url
+
+# Authentication
+django-allauth
+
+# Static Files
+whitenoise
+
+# API & CORS
+django-cors-headers
+
+# HTTP Requests (required by django-allauth)
+requests
+
+# Production Server
+gunicorn
+
+# Development & Testing
+pytest
+pytest-django
