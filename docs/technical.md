@@ -104,6 +104,101 @@ The project uses environment variables for configuration:
 - Integration tests for API endpoints
 - Authentication flow tests
 
+## Development Workflow
+
+### 1. Setup and Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/pgeurin/django_template.git
+cd django_template
+
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Set up environment variables
+cp .env.example .env
+# Edit .env with your settings
+```
+
+### 2. Database Management
+
+```bash
+# Navigate to Django app directory
+cd django_app
+
+# Run migrations
+python manage.py migrate
+
+# Create superuser
+python manage.py createsuperuser
+
+# Create new migration
+python manage.py makemigrations
+
+# Show SQL for migration
+python manage.py sqlmigrate main 0001
+```
+
+### 3. Running the Server
+
+```bash
+# Start development server
+python manage.py runserver
+
+# Start development server on different port
+python manage.py runserver 8080
+
+# Start development server accessible on network
+python manage.py runserver 0.0.0.0:8000
+```
+
+### 4. Google OAuth Setup
+
+```bash
+# Set up Google OAuth
+cd ..  # Back to project root
+./setup_oauth.sh <client_id> <client_secret>
+```
+
+### 5. Testing
+
+```python
+# django_app/main/tests.py
+from django.test import TestCase
+from django.urls import reverse
+from main.models import User
+
+class UserModelTests(TestCase):
+    def setUp(self):
+        self.user = User.objects.create_user(
+            email='test@example.com',
+            password='testpassword123'
+        )
+    
+    def test_user_creation(self):
+        self.assertEqual(self.user.email, 'test@example.com')
+        self.assertTrue(self.user.check_password('testpassword123'))
+
+class HomeViewTests(TestCase):
+    def test_home_page_status_code(self):
+        response = self.client.get(reverse('home'))
+        self.assertEqual(response.status_code, 200)
+```
+
+```bash
+# Run tests
+python manage.py test
+
+# Run tests with coverage
+coverage run --source='.' manage.py test
+coverage report
+```
+
 ## Deployment
 
 ### Development
