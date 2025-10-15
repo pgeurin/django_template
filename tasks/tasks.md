@@ -4,6 +4,17 @@
 
 This document outlines the current tasks, requirements, and priorities for the Django Template project.
 
+### High Priority - New Project Validation
+
+- [ ] **Create a new Django project from scratch using this template**
+  - [ ] Test the complete setup process from README
+  - [ ] Verify all documentation is accurate and complete
+  - [ ] Run through the entire deployment runbook
+  - [ ] Test Google OAuth setup from start to finish
+  - [ ] Validate all scripts work correctly
+  - [ ] Document any issues or improvements needed
+  - [ ] Update documentation based on findings
+
 ### Completed Tasks
 
 - [x] Set up basic Django project structure
