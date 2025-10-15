@@ -36,12 +36,23 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       
-    - name: Deploy to Render
-      uses: johnbeynon/render-deploy-action@v0.0.8
-      with:
-        service-id: ${{ secrets.RENDER_SERVICE_ID }}
-        api-key: ${{ secrets.RENDER_API_KEY }}
-        wait-for-success: true
+    - name: Deploy to Render using CLI
+      run: |
+        # Install Render CLI
+        curl -s https://raw.githubusercontent.com/render-oss/cli/main/scripts/install.sh | bash
+        
+        # Set up API key
+        export RENDER_API_KEY=${{ secrets.RENDER_API_KEY }}
+        
+        # Deploy using the CLI
+        render deploys create ${{ secrets.RENDER_SERVICE_ID }} --output text
+        
+        # Wait for deployment to start
+        echo "Deployment triggered. Waiting for it to complete..."
+        sleep 30
+        
+        # Check deployment status
+        render services get ${{ secrets.RENDER_SERVICE_ID }} --output text
         
     - name: Verify deployment
       run: |
