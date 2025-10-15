@@ -19,7 +19,11 @@
 - [ ] Create new Blueprint pointing to GitHub repository
 - [ ] Apply Blueprint to create services
 - [ ] Add Google OAuth environment variables
-- [ ] Wait for initial deployment to complete
+- [ ] Monitor deployment progress (can take 5-15 minutes)
+  - [ ] Check deployment status using Render CLI
+  - [ ] Review logs for any build or startup errors
+  - [ ] Verify gunicorn is properly installed
+- [ ] Wait for initial deployment to complete (status: Live)
 - [ ] Access Django admin panel
 - [ ] Configure Social Application for Google OAuth
 - [ ] Test Google login functionality

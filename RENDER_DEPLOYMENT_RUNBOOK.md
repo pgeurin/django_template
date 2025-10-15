@@ -204,11 +204,29 @@ git push origin main
    - Secret key: Your Google OAuth client secret
    - Sites: Select your site and add it to "Chosen sites"
 
-## 4. Verify Deployment
+## 4. Monitor and Verify Deployment
 
-### 4.1. Test the Application
+### 4.1. Monitor Deployment Progress
 
-1. Visit your application at `https://your-app-name.onrender.com`
+1. Deployments on Render can take 5-15 minutes to complete, especially for the first deployment
+2. You can monitor the deployment status using the Render CLI:
+   ```bash
+   export RENDER_API_KEY=your_render_api_key
+   render deploys list your_service_id --output text
+   ```
+3. Check deployment logs for progress and potential issues:
+   ```bash
+   render logs -r your_service_id --output text
+   ```
+4. Common deployment states:
+   - `Created`: Deployment has been created but not yet started
+   - `Build In Progress`: Building the application
+   - `Live`: Successfully deployed and running
+   - `Update Failed`: Deployment failed (check logs for errors)
+
+### 4.2. Test the Application
+
+1. Once the deployment shows as `Live`, visit your application at `https://your-app-name.onrender.com`
 2. Test the Google login functionality
 3. Verify that all features are working correctly
 
