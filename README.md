@@ -2,6 +2,19 @@
 
 A production-ready Django template with Google OAuth authentication, organized for easy deployment and maintenance.
 
+## ⚠️ IMPORTANT: Updated Deployment Runbook
+
+**The deployment runbook has been updated with critical lessons learned from real production deployments.**
+
+**Before deploying, please read:** [`docs/deployment/RENDER_DEPLOYMENT_RUNBOOK.md`](docs/deployment/RENDER_DEPLOYMENT_RUNBOOK.md)
+
+This runbook now includes solutions for common deployment issues:
+- Google OAuth 500 errors
+- Database migration automation
+- Superuser creation automation
+- ALLOWED_HOSTS configuration
+- Build command formatting
+
 ## 🚀 Quick Start
 
 ### Local Development

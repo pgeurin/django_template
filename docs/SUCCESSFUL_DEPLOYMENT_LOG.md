@@ -237,3 +237,52 @@ render logs -r srv-your-service-id --limit 50 --output text
 - `RENDER_DEPLOYMENT_CHECKLIST.md` - Quick reference
 
 This deployment process successfully created a production-ready Django template with proper dependency management, local testing environment, and Render deployment pipeline.
+
+## 🚨 CRITICAL LESSONS LEARNED (October 16, 2025)
+
+### Template Validation Deployment Issues Discovered
+
+During the validation deployment of `django_template_test`, we discovered several critical issues that were missing from the original runbook:
+
+#### 1. **Google OAuth 500 Errors**
+- **Issue**: Login pages returning 500 errors
+- **Root Cause**: Google OAuth configured to use database SocialApp records instead of environment variables
+- **Solution**: Updated settings.py to use `os.getenv('GOOGLE_CLIENT_ID')` and `os.getenv('GOOGLE_CLIENT_SECRET')`
+- **Prevention**: Always configure OAuth to use environment variables in production
+
+#### 2. **Database Migrations Not Running**
+- **Issue**: Database tables not created during deployment
+- **Root Cause**: Migrations only run at startup, not during build
+- **Solution**: Added `python manage.py migrate` to render.yaml buildCommand
+- **Prevention**: Always run migrations during build phase
+
+#### 3. **No Superuser Created**
+- **Issue**: Cannot access Django admin panel
+- **Root Cause**: No automated superuser creation during deployment
+- **Solution**: Added superuser creation to render.yaml buildCommand
+- **Prevention**: Automate superuser creation in deployment process
+
+#### 4. **ALLOWED_HOSTS Configuration**
+- **Issue**: DisallowedHost errors
+- **Root Cause**: ALLOWED_HOSTS not configured for exact Render domain
+- **Solution**: Set ALLOWED_HOSTS to include exact domain: `"your-app.onrender.com,.onrender.com"`
+- **Prevention**: Always include exact domain in ALLOWED_HOSTS
+
+#### 5. **Build Command Failures**
+- **Issue**: Complex build commands failing
+- **Root Cause**: Improper YAML formatting for multi-line commands
+- **Solution**: Use multi-line YAML format with `|` for buildCommand
+- **Prevention**: Test build commands locally before deployment
+
+### Updated Documentation
+- ✅ **RENDER_DEPLOYMENT_RUNBOOK.md** - Updated with all critical issues and solutions
+- ✅ **Troubleshooting section** - Added comprehensive real-world solutions
+- ✅ **Deployment checklist** - Added all critical steps that were missing
+- ✅ **Working render.yaml** - Documented exact configuration that works
+
+### Files Updated
+- `docs/deployment/RENDER_DEPLOYMENT_RUNBOOK.md` - Complete overhaul with lessons learned
+- `docs/status.md` - Updated with production deployment success
+- `render.yaml` - Updated with working build commands
+
+This deployment process successfully created a production-ready Django template with proper dependency management, local testing environment, and Render deployment pipeline.
